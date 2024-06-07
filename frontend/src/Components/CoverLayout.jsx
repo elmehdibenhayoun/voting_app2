@@ -37,7 +37,7 @@ function CoverLayout(props) {
       <Container
         sx={{
           mt: 3,
-          mb: 14,
+          mb: 5,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

@@ -250,7 +250,7 @@ function AddCandidate({
   handleNewCandidateImageChange,
 }) {
   return (
-    <div className="container md-5">
+    <div className="cards-container" style={{ display: 'flex', flexWrap: 'wrap',padding:'left:2', justifyContent: 'center' }}>
       <TextField
         type="text"
         value={newCandidateName}

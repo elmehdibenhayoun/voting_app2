@@ -21,15 +21,16 @@ import CoverLayout from "./CoverLayout";
     }} 
   >
     <img
+    color="black"
       style={{ display: "none" }}
       src={backgroundImage}
       alt="increase priority"
     />
-    <Typography color="inherit" align="center" variant="h2" marked="center">
+    <Typography color="white" align="center" variant="h2" marked="center">
       Blockchain Based Voting System
     </Typography>
     <Typography
-      color="inherit"
+      color="white"
       align="center"
       variant="h5"
       sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}

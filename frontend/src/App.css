@@ -1,4 +1,4 @@
-/* 
+
 
 body {
   margin: 0;
@@ -6,20 +6,20 @@ body {
 }
 
 .app {
-  display: flex;
+  
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  height: 100%;
+  
 }
 
-/* .app__container {
-  background-color: #fff;
+ .app__container {
+  
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-} */
-/*
+} 
+
 .container {
   text-align: center;
 }
@@ -34,7 +34,7 @@ body {
   margin-top: 10px;
   padding: 10px 20px;
   background-color: #007bff;
-  color: #fff;
+  color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -92,7 +92,7 @@ body {
 .add-candidate button {
   padding: 10px 20px;
   background-color: #28a745;
-  color: #fff;
+  color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -134,12 +134,12 @@ body {
 
 
 .connected-container {
-  display: flex;
+  
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f1f1f1;
+  height: 100%;
+  
 }
 
 .connected-header {
@@ -156,7 +156,7 @@ body {
 
 .connected-button {
   background-color: #007bff;
-  color: #fff;
+  color: #000000;
   font-size: 1.2rem;
   border: none;
   border-radius: 0.3rem;
@@ -200,4 +200,4 @@ input[type=number] {
   font-size: 16px;
   margin-bottom: 10px;
 }
- */
+

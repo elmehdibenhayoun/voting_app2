@@ -1,5 +1,6 @@
 import React from "react";
 import CoverLayout from "./CoverLayout";
+import Box from '@mui/material/Box';
 import { Card, CardHeader, CardContent, CardMedia, CardActions, Typography, Button, TextField } from '@mui/material';
 
 const Connected = (props) => {
@@ -21,28 +22,34 @@ const Connected = (props) => {
       <Typography variant="body1" className="connected-account">
         Metamask Account: {props.account}
       </Typography>
-      <Typography variant="body1" className="connected-account">
-        Remaining Time: {props.remainingTime}
-      </Typography>
+     
       {props.showButton ? (
         <Typography variant="body1" className="connected-account">
           You have already voted
         </Typography>
       ) : (
+        
         <form>
-          <TextField
-            type="number"
-            label="Enter Candidate Index"
-            value={props.number}
-            onChange={props.handleNumberChange}
-            variant="outlined"
-            className="login-input"
-          />
-          <br />
-          <Button variant="contained" className="login-button" onClick={props.voteFunction}>
-            Vote
-          </Button>
-        </form>
+          <Box my={1} />
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <TextField
+          id="filled-basic"
+          label="Enter Candidate Index"
+          value={props.number}
+          onChange={props.handleNumberChange}
+          variant="filled"
+          sx={{ backgroundColor: 'white', borderRadius: '8px', width: '100%' }}
+        />
+        <Box my={1} />
+        <Button
+          variant="contained"
+          className="login-button"
+          onClick={props.voteFunction}
+        >
+          Vote
+        </Button>
+      </Box>
+    </form>
       )}
 
       <div className="cards-container" style={{ display: 'flex', flexWrap: 'wrap',padding:'left:2', justifyContent: 'center' }}>
@@ -73,6 +80,7 @@ const Connected = (props) => {
           </div>
         ))}
       </div>
+      
     </div>
     </CoverLayout>
   );
