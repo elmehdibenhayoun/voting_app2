@@ -8,10 +8,11 @@ import Finished from "./Components/Finished";
 import Connected from "./Components/Connected";
 import CoverPage from "./CoverPage";
 import "./App.css";
+import Box from '@mui/material/Box';
 import { TextField, Button } from '@mui/material';
 
-const pinataApiKey = "cd77e5f1d0a8b5739fd7";
-const pinataSecretApiKey = "7e08db964bb8c0a13652736915119635dd551cd0d215fbb7eb86476cbe38659b";
+const pinataApiKey = "318fb736a91173b0ecf7";
+const pinataSecretApiKey = "cacabf3d3845364281eb3db28a0053c8765ec1074ae50d9684671f5452800e0d";
 
 function App() {
   const [provider, setProvider] = useState(null);
@@ -122,8 +123,9 @@ function App() {
       contractAbi,
       signer
     );
-    const voteStatus = await contractInstance.voters(await signer.getAddress());
-    setIsAllowedToVote(voteStatus);
+    const voterStatus = await contractInstance.voters(await signer.getAddress());
+    console.log("Voter Status:", voterStatus); // Ajoutez ceci pour vérifier le statut du votant
+    setIsAllowedToVote(!voterStatus); // Mise à jour pour refléter le statut correct
   }
 
   async function getCandidates() {
@@ -144,6 +146,7 @@ function App() {
         image: candidate.image,
       };
     });
+    console.log("Formatted Candidates:", formattedCandidates); // Ajoutez ceci pour vérifier les données
     setCandidates(formattedCandidates);
   }
 
@@ -218,69 +221,23 @@ function App() {
     <div className="app">
       {
         isConnected ? (
-          <div>
-            <Connected
-              account={account}
-              candidates={candidates}
-              remainingTime={remainingTime}
-              number={number}
-              handleNumberChange={handleNumberChange}
-              voteFunction={vote}
-              showButton={isAllowedToVote}
-            />
-            <AddCandidate
-              addCandidate={addCandidate}
-              newCandidateName={newCandidateName}
-              handleNewCandidateChange={handleNewCandidateChange}
-              handleNewCandidateImageChange={handleNewCandidateImageChange}
-            />
-          </div>
+          <Connected
+            account={account}
+            candidates={candidates}
+            remainingTime={remainingTime}
+            number={number}
+            handleNumberChange={handleNumberChange}
+            voteFunction={vote}
+            showButton={!isAllowedToVote}
+            addCandidate={addCandidate}
+            newCandidateName={newCandidateName}
+            handleNewCandidateChange={handleNewCandidateChange}
+            handleNewCandidateImageChange={handleNewCandidateImageChange}
+          />
         ) : (
           <Login connectWallet={connectToMetamask} />
         )
       }
-    </div>
-  );
-}
-
-function AddCandidate({
-  addCandidate,
-  newCandidateName,
-  handleNewCandidateChange,
-  handleNewCandidateImageChange,
-}) {
-  return (
-    <div className="cards-container" style={{ display: 'flex', flexWrap: 'wrap',padding:'left:2', justifyContent: 'center' }}>
-      <TextField
-        type="text"
-        value={newCandidateName}
-        onChange={handleNewCandidateChange}
-        placeholder="Candidate Name"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-      />
-      <input
-        type="file"
-        fullWidth
-        onChange={handleNewCandidateImageChange}
-        style={{ display: "none" }}
-        id="newCandidateImage"
-      />
-      <label htmlFor="newCandidateImage">
-        <Button  fullWidth variant="contained" component="span">
-          Upload Image
-        </Button>
-      </label>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={addCandidate}
-        fullWidth
-        style={{ marginTop: "10px" }}
-      >
-        Add Candidate
-      </Button>
     </div>
   );
 }
